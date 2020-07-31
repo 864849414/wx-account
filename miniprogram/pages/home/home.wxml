@@ -1,0 +1,77 @@
+<view class="home">
+
+  <view class="home-title">
+
+    <view>
+      <view class="title">本月结余</view>
+      <view class="title-money">￥{{currentMonthBooking.jieyu}}</view>
+    </view>
+
+    <view class="clearfix home-text">
+
+      <view class="fl home-text-item">
+        <view class="clearfix">
+          <view >本月收入</view>
+          <view class=" money-text">￥{{currentMonthBooking.shouru}}</view>
+        </view>
+        
+      </view>
+      <view class="fl home-text-item">
+        <view class="clearfix fr">
+          <view >本月支出</view>
+          <view class=" money-text">￥{{currentMonthBooking.zhichu}}</view>
+        </view>
+        
+      </view>
+
+    </view>
+  </view>
+
+  <view class="home-content">
+    <view class="clearfix">
+
+      <view class="fl content">
+        <view class="fl">{{currentDate}}</view>
+        <view class="fl content-item">
+          <view>收入：{{currentDayBooking.shouru}}</view>
+        </view>
+        <view class="fl content-item">
+          <view>支出：{{currentDayBooking.zhichu}}</view>
+        </view>
+      </view>
+
+      <view class="fr date">
+        <view class="clearfix date-box">
+          <view class="fl point"></view>
+          <view class="fl point"></view>
+          <view class="fl point"></view>
+        </view>
+        <picker class="picker-box" bindchange="selectDate" mode="date" start="{{dateRange.start}}" end="{{dateRange.end}}">
+          请选择日期
+        </picker>
+      </view>
+    </view>
+
+    <view class="list">
+
+      <view class="list-item clearfix" wx:for='{{bookingData}}' wx:key="index">
+        <view class="fl list-icon">
+          <image class="auto-img list-icon-img" src="{{item.bookingType.url}}" mode="widthFix"></image>
+        </view>
+        <view class="fl list-content">
+          <view class="fl left-content">
+            <view class="clearfix {{item.userBooking.comment == '' ? 'not-comment' : 'top-text'}}">
+              <view class="fl type">{{item.bookingType.title}}</view>
+              <view class="fl">{{item.accountType.title}}</view>
+            </view>
+            <view class="comment">{{item.bookingInfo.comment}}</view>
+          </view>
+          <view class="fr money-t {{item.costType.type}}">￥{{item.bookingInfo.money}}</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,61 @@
+<view class="booking">
+  <view class="booking-bg"></view>
+</view>
+<view class="booking-box"> 
+
+  <view class="booking-box-title">
+    <!-- 收入支出 -->
+    <view class="title clearfix">
+      <view class="fl title-item {{item.isActive? 'active' : ' ' }}" wx:for="{{tagData}}"  wx:key="index" data-index="{{index}}"  data-active="{{item.isActive}}" data-key="tagData" bindtap="toggleTag">{{item.title}}</view>
+    </view>
+
+      <!-- 图标 -->
+    <view class="icons-box clearfix">
+
+      <view class="fl icons-item"  wx:for="{{iconsData}}" wx:key="index" data-key="iconsData" data-active="{{item.isActive}}" data-index="{{index}}" bindtap="toggleTag">
+        <view class="item-box {{item.isActive? 'active':''}}">
+          <view class="item-box-img">
+            <image class="auto-img item-img" mode="widthFix"  src="{{item.url}}"></image>
+          </view>
+          <view class="item-box-text">{{item.title}}</view>
+        </view>
+      </view>      
+   
+    </view>
+  </view>
+
+    <!-- 账户选择 -->
+    <view class="account"> 
+          <view class="account-title">账户选择</view>
+          <view class="account-items clearfix">
+              <view class="account-item fl {{item.isActive?'active':''}}" wx:for="{{accountType}}" wx:key="index" data-index="{{index}}" data-active="{{item.isActive}}" data-key="accountType" bindtap="toggleTag">{{item.title}}</view>
+          </view>
+    </view>
+
+    <!-- 记账信息 -->
+    <view class="booking-info">
+
+        <view class="booking-item clearfix">
+            <view class="item-title fl">日期</view>
+            <view class="item-date fl" >
+                <picker class="picker-box"  mode="date" start="{{date.start}}" end="{{date.end}}" bindchange="inputBookingInfo" data-key="date">
+                  {{bookingInfo.date}}
+                </picker>
+            </view>
+        </view>
+        <view class="booking-item clearfix">
+            <view class="item-title fl">金额</view>
+            <view class="item-date fl">
+                <input class="item-input" placeholder="请输入金额" type="digit" bindchange="inputBookingInfo" data-key="money"></input>
+            </view>
+        </view>
+        <view class="booking-item clearfix">
+            <view class="item-title fl">备注</view>
+            <view class="item-date fl">
+                <input class="item-input" placeholder="请输入备注" bindchange="inputBookingInfo" data-key="comment"></input>
+            </view>
+        </view>
+    </view>
+
+    <view class="sava" bindtap="save">保存</view>
+</view>

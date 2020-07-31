@@ -1,0 +1,10 @@
+<view class="epidemic">
+        <view class="list">
+
+                <view class="list-items clearfix" wx:for='{{epidemicData}}' wx:key='index'>
+                        <view class="item-title fl">{{item[0].title}}:</view>
+                        <view class="item-count fl">{{item[0].count}}</view>
+                </view>
+
+        </view>
+</view>
